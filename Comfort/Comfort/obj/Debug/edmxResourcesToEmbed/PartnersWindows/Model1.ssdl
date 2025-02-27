@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ComfortModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Practica756.dbo.Partner" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Director" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Phone" />
+      <PropertyRef Name="Adress" />
+      <PropertyRef Name="INN" />
+      <PropertyRef Name="Rating" />
+      <PropertyRef Name="Discount" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Director" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Adress" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="INN" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Rating" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Хранилище ComfortModelContainer">
+    <EntitySet Name="Partner" EntityType="Self.Partner" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Partner].[ID] AS [ID], 
+    [Partner].[Type] AS [Type], 
+    [Partner].[Name] AS [Name], 
+    [Partner].[Director] AS [Director], 
+    [Partner].[Email] AS [Email], 
+    [Partner].[Phone] AS [Phone], 
+    [Partner].[Adress] AS [Adress], 
+    [Partner].[INN] AS [INN], 
+    [Partner].[Rating] AS [Rating], 
+    [Partner].[Discount] AS [Discount]
+    FROM [dbo].[Partner] AS [Partner]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

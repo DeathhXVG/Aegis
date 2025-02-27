@@ -1,0 +1,128 @@
+﻿<Window x:Class="Comfort.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Comfort"
+        mc:Ignorable="d"
+        Title="AEGIS" Height="450" Width="800" Icon="/caduceus-icon.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="#0D2233">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+        <DataGrid FontWeight="Bold" Foreground="#72B7BC" Background="#0D2233"  BorderBrush="#72B7BC" x:Name="DataGridPartners"
+                  BorderThickness="2"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="None"
+                  GridLinesVisibility="None"
+                  CanUserAddRows="False"
+                  Margin="10,10,250,10"
+                  HorizontalContentAlignment="Stretch"
+                  ColumnWidth="*" SelectionChanged="DataGridPartners_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#72B7BC" BorderThickness="5" Background="#0D2233" Margin="1">
+                                <Grid Background="#0D2233">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Background="#0D2233" Orientation="Horizontal" Grid.Column="0" Margin="10">
+                                        <TextBlock FontWeight="Bold" Foreground="#72B7BC"><TextBlock Text="{Binding Type}"/><TextBlock Text=" | "/><TextBlock Text="{Binding Name}"/>  
+                                            <LineBreak/>
+                                            <TextBlock FontWeight="Bold" Foreground="#72B7BC" Text="{Binding Director}"/>
+                                            <LineBreak/>
+                                            <TextBlock Foreground="#72B7BC">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="+7{0}">
+                                                        <Binding Path="Phone"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                    </TextBlock>
+                                            <LineBreak/>
+                                        <TextBlock FontWeight="Bold" Foreground="#72B7BC">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="Рейтинг: {0}">
+                                                        <Binding Path="Rating"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                            </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid FontWeight="Bold" Foreground="#72B7BC" Background="#FF2A4151"  BorderBrush="#72B7BC" x:Name="DataGridProducts" Visibility="Collapsed"
+                  BorderThickness="2"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="None"
+                  GridLinesVisibility="None"
+                  CanUserAddRows="False"
+                  Margin="10,10,250,10"
+                  HorizontalContentAlignment="Stretch"
+                  ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="1" BorderBrush="#72B7BC" BorderThickness="3" Background="#0D2233" Margin="1">
+                                <Grid Background="#0D2233">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Background="#0D2233" Orientation="Horizontal" Grid.Column="0" Margin="10">
+
+                                        <TextBlock Foreground="#72B7BC"><TextBlock Text="Поставщик"/><TextBlock Text=" : "/><TextBlock Text="{Binding NamePartners}"/> <LineBreak/>
+                                        <TextBlock FontWeight="Bold" Foreground="#72B7BC">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="Название продукта: {0}">
+                                                        <Binding Path="Products1"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                        </TextBlock>
+                                                                                    
+                                        
+                                                
+                                            <LineBreak/>
+                                        <TextBlock FontWeight="Bold" Foreground="#72B7BC">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="Количество: {0}">
+                                                        <Binding Path="CountProducts"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                        </TextBlock>
+                                            <LineBreak/>
+                                        <TextBlock FontWeight="Bold" Foreground="#72B7BC">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="Годен до: {0:dd.MM.yyyy}">
+                                                        <Binding Path="ExpirationDate"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                        </TextBlock>
+                                    </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="AddWindowButton1" Visibility="Collapsed" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Добавить" HorizontalAlignment="Right" Margin="0,130,10,230" VerticalAlignment="Center"  Height="36" Width="220" FontWeight="Bold" Click="AddWindowButton_Click1" Background="#FF2A4151"/>
+        <Button x:Name="EditWindowButton1" Visibility="Collapsed" Background="#0D2233" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Изменить" HorizontalAlignment="Right" Margin="0,180,10,180" VerticalAlignment="Center" Height="36" Width="220" FontWeight="Bold" Click="EditWindowButton_Click1"/>
+        <Button x:Name="DeleteButton1" Visibility="Collapsed" Background="#0D2233" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Удалить" HorizontalAlignment="Right" Margin="0,230,10,130" VerticalAlignment="Center" Height="36" Width="220" FontWeight="Bold" Click="DeleteButton_Click1"/>
+        <Button x:Name="AddWindowButton" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Добавить" HorizontalAlignment="Right" Margin="0,130,10,230" VerticalAlignment="Center"  Height="36" Width="220" FontWeight="Bold" Click="AddWindowButton_Click" Background="#0D2233"/>
+        <Button x:Name="EditWindowButton" Background="#0D2233" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Изменить" HorizontalAlignment="Right" Margin="0,180,10,180" VerticalAlignment="Center" Height="36" Width="220" FontWeight="Bold" Click="EditWindowButton_Click"/>
+        <Button x:Name="DeleteButton" Background="#0D2233" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Удалить" HorizontalAlignment="Right" Margin="0,230,10,130" VerticalAlignment="Center" Height="36" Width="220" FontWeight="Bold" Click="DeleteButton_Click"/>
+        <Button x:Name="ProductsWindowButton" Background="#0D2233" Foreground="#72B7BC" BorderBrush="#72B7BC" BorderThickness="2" Content="Продукция/Поставщики" HorizontalAlignment="Right" Margin="0,282,10,82" VerticalAlignment="Center" Height="36" Width="220" FontWeight="Bold" Click="ProductsWindowButton_Click"/>
+        <Image HorizontalAlignment="Left"  Height="118" Margin="630,10,0,0" VerticalAlignment="Top" Width="100" Source="/caduceus-icon.png"/>
+    </Grid>
+</Window>
